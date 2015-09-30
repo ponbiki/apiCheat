@@ -1,0 +1,20 @@
+{
+    "name": "ponbiki/apiCheat",
+    "description": "Lazy man web GUI for API functionality",
+    "authors": [{
+        "name": "ponbiki",
+        "email": "jcandroscavage@hotmail.com"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-pdo": "*",
+        "slim/slim": "^2.6",
+        "slim/views": "^0.1.3",
+        "twig/twig": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "ponbiki\\apiCheat\\": "src/"
+        }
+    }
+}
