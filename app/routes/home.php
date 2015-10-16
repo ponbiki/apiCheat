@@ -7,7 +7,7 @@ new cheat\Session();
 $app->get('/', function() use ($app) {
     
     $page = "Api Key Entry";
-    $meta = "";
+    $meta = "Login";
     
     if ($_SESSION['api_key']) {
         $app->redirect('/menu');
