@@ -24,13 +24,16 @@ $app->get('/', function() use ($app) {
 })->name('home');
 
 $app->post('/', function () use ($app) {
-    $_SESSION['api_key'] = \filter_var(($app->request()->post('api_key')), FILTER_SANITIZE_STRING);
+    $temp_key = \filter_var(($app->request()->post('key')), FILTER_SANITIZE_STRING);
     
-    if ($_SESSION['api_key'] == "" /* || key validation check failure */) {
+    $api = new cheat\ApiCalls();
+    
+    if ($temp_key == "" || $api->keyValidate($temp_key) == FALSE) {
         $_SESSION['error'] = "Please enter your API key";
         $app->redirect('/');
     } else {
         cheat\Session::clear();
+        $_SESSION['api_key'] - $temp_key;
         $app->redirect('/menu');
     }
 });

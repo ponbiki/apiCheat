@@ -4,7 +4,7 @@ namespace ponbiki\apiCheat;
 
 class ApiCalls implements \iApiCalls
 {
-    public function validate($key)
+    public function keyValidate($key)
     {
         $clean_key = \filter_var($key, FILTER_SANITIZE_STRING);
         $ch = \curl_init();
