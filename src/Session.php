@@ -2,7 +2,7 @@
 
 namespace ponbiki\apiCheat;
 
-class Session implements \iSession
+class Session implements iSession
 {
     public function __construct()
     {
