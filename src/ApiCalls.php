@@ -2,7 +2,7 @@
 
 namespace ponbiki\apiCheat;
 
-class ApiCalls implements \iApiCalls
+class ApiCalls implements iApiCalls
 {
     public function keyValidate($key)
     {
