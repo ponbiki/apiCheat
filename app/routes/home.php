@@ -4,12 +4,16 @@ use ponbiki\apiCheat as cheat;
 
 new cheat\Session();
 
-$app->get('/', function() use ($app) {
+$app->get('/', function () use ($app) {
     
     $page = "Api Key Entry";
     $meta = "Login";
     
-    if ($_SESSION['api_key']) {
+    if (!array_key_exists('error', $_SESSION)) {
+        $_SESSION['error'] = [];
+    }    
+
+    if (array_key_exists('api_key', $_SESSION)) {
         $app->redirect('/menu');
     }
     
@@ -33,7 +37,7 @@ $app->post('/', function () use ($app) {
         $app->redirect('/');
     } else {
         cheat\Session::clear();
-        $_SESSION['api_key'] - $temp_key;
+        $_SESSION['api_key'] = $temp_key;
         $app->redirect('/menu');
     }
 });
