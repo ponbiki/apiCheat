@@ -8,7 +8,7 @@ $app = new \Slim\Slim([
 
 // Views
 $view = $app->view();
-$view->setTemplateDirectory('../app/views');
+$view->setTemplatesDirectory('../app/views');
 $view->parserExtensioons = [
     new \Slim\Views\TwigExtension()
 ];
