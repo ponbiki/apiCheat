@@ -17,7 +17,7 @@ $app->get('/', function () use ($app) {
         $app->redirect('/menu');
     }
     
-    $app->render('home.html/twig', [
+    $app->render('home.html.twig', [
         'page' => $page,
         'meta' => $meta,
         'error' => $_SESSION['error']
@@ -28,16 +28,17 @@ $app->get('/', function () use ($app) {
 })->name('home');
 
 $app->post('/', function () use ($app) {
-    $temp_key = \filter_var(($app->request()->post('key')), FILTER_SANITIZE_STRING);
     
-    $api = new cheat\ApiCalls();
+    $key = \filter_var(($app->request()->post('key')), FILTER_SANITIZE_STRING);
     
-    if ($temp_key == "" || $api->keyValidate($temp_key) == FALSE) {
+    $api = (new cheat\ApiCalls)->keyValidate($key);
+    
+    if (($key == "") || ($api == FALSE)) {
         $_SESSION['error'] = "Please enter your API key";
         $app->redirect('/');
     } else {
         cheat\Session::clear();
-        $_SESSION['api_key'] = $temp_key;
+        $_SESSION['api_key'] = $key;
         $app->redirect('/menu');
     }
 });
