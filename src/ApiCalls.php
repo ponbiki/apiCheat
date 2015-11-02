@@ -10,6 +10,7 @@ class ApiCalls implements iApiCalls
         $ch = \curl_init();
         \curl_setopt($ch, CURLOPT_URL, self::BASEURL ."zones");
         \curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-NSONE-Key: $clean_key"));
+        \curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $body = \json_decode(\curl_exec($ch));
         \curl_close($ch);
         if ($body['message'] === "Unauthorized") {
