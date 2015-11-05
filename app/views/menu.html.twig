@@ -1,0 +1,25 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block title %}{{ page }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    {% block keywords %}
+        <meta name='keywords' content='NS1, NSONE, api cheat {{ meta }}'>
+    {% endblock %}
+{% endblock %}
+{% block scripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $( "input[type=submit], a, .jbutton" ).button();
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
+{% endblock %}
+{% block content %}
+{% endblock %}

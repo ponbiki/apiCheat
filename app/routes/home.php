@@ -4,18 +4,20 @@ use ponbiki\apiCheat as cheat;
 
 new cheat\Session();
 
+if (!array_key_exists('error', $_SESSION)) {
+    $_SESSION['error'] = [];
+}
+
 $app->get('/', function () use ($app) {
     
     $page = "Api Key Entry";
     $meta = "Login";
     
-    if (!array_key_exists('error', $_SESSION)) {
-        $_SESSION['error'] = [];
-    }    
-
     if (array_key_exists('api_key', $_SESSION)) {
         $app->redirect('/menu');
     }
+    
+echo "<pre>";print_r($_SESSION);echo "</pre>";
     
     $app->render('home.html.twig', [
         'page' => $page,
