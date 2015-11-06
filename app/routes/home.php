@@ -17,8 +17,6 @@ $app->get('/', function () use ($app) {
         $app->redirect('/menu');
     }
     
-echo "<pre>";print_r($_SESSION);echo "</pre>";
-    
     $app->render('home.html.twig', [
         'page' => $page,
         'meta' => $meta,
@@ -35,12 +33,16 @@ $app->post('/', function () use ($app) {
     
     $api = (new cheat\ApiCalls)->keyValidate($key);
     
-    if (($key == "") || ($api == FALSE)) {
-        $_SESSION['error'] = "Please enter your API key";
+    if ($key == "") {
+        $_SESSION['error'][] = "Please enter your API key";
+        $app->redirect('/');
+    } elseif ($api == FALSE) {
+        $_SESSION['error'][] = "Key invalid. Please re-enter your API key";
         $app->redirect('/');
     } else {
         cheat\Session::clear();
         $_SESSION['api_key'] = $key;
+        $_SESSION['loggedin'] = TRUE;
         $app->redirect('/menu');
     }
 });

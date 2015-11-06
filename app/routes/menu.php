@@ -19,13 +19,12 @@ $app->get('/menu', function() use ($app) {
     $page = "Menu";
     $meta = "API Cheat Menu";
     
-    echo "<pre>";print_r($_SESSION);echo "</pre>";
-    
     $app->render('menu.html.twig', [
         'page' => $page,
         'meta' => $meta,
         'info' => $_SESSION['info'],
-        'error' => $_SESSION['error']
+        'error' => $_SESSION['error'],
+        'loggedin' => $_SESSION['loggedin']
     ]);
     
     

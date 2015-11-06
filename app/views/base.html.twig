@@ -39,15 +39,9 @@
         </head>
             <body>
             {% block navigation %}
-                {% if loggedin and not admin %}
+                {% if loggedin %}
                     <div class='navbar'>
                         <a href='/user/menu' title='Menu'>Menu</a>
-                        <a href='/logout' title='Logout'>Logout</a>
-                    </div>
-                {% elseif admin %}
-                    <div class='navbar'>
-                        <a href='manage.php' title='User Management'>Users</a>
-                        <a href='confmanage.php' title='Config File Management'>Configs</a>
                         <a href='/logout' title='Logout'>Logout</a>
                     </div>
                 {% endif %}
