@@ -19,5 +19,6 @@ $app->get('/menu', function() use ($app) {
         'loggedin' => $_SESSION['loggedin']
     ]);
     
+    cheat\Session::clear();    
     
 })->name('menu');

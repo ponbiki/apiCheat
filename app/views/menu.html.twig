@@ -9,16 +9,32 @@
 {% block scripts %}
     <script type='text/javascript'>
         $(function() {
+            $( "#tabs" ).tabs();
+        });
+        $(function() {
             $( "input[type=submit], a, .jbutton" ).button();
+        });
+        $(function() {
+            $( "#zonecheck").selectmenu();
         });
         $(document).ready(function() {
             setTimeout(function() {
                 $( ".notify" ).fadeOut(1000, function () {
-                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                    $( ".notify" ).css({"visibility":"hidden","display":"block"}).slideUp();
                 });
             }, 3500);
         });
     </script>
 {% endblock %}
 {% block content %}
+    <div id='tabs'>
+        <ul>
+            <li><a href='#zones-check' title='Zone Consistancy Checker'>Zone Check</a></li>
+        </ul>
+        <div id='zones-check'>
+            <form method='post'action='/zonees/diff'>
+                
+            </form>
+        </div>
+    </div>
 {% endblock %}
