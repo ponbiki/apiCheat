@@ -2,14 +2,6 @@
 
 use ponbiki\apiCheat as cheat;
 
-if (!array_key_exists('info', $_SESSION)) {
-    $_SESSION['info'] = [];
-}
-
-if (!array_key_exists('error', $_SESSION)) {
-    $_SESSION['error'] = [];
-}
-
 $app->get('/menu', function() use ($app) {
     
     if (!isset($_SESSION['api_key'])) {

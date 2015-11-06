@@ -12,6 +12,12 @@ class Session implements  iSession
             session_regenerate_id();
             $_SESSION['generated'] = time();
         }
+        if (!array_key_exists('info', $_SESSION)) {
+            $_SESSION['info'] = [];
+        }
+        if (!array_key_exists('error', $_SESSION)) {
+            $_SESSION['error'] = [];
+        }
     }
     
     public static function logout()

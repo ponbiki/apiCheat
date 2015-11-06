@@ -217,7 +217,6 @@ ul {
     text-decoration-color: red;
 }
 .navbar {
-    /*background-color:#3A3A3A;*/
     background: -webkit-linear-gradient(180deg, #3A3A3A, #000000); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(180deg, #3A3A3A, #000000); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(180deg, #3A3A3A, #000000); /* For Firefox 3.6 to 15 */
@@ -235,18 +234,17 @@ ul {
     display:block;
     height: 55px;
     width:auto;
-    margin-top: -3px;
-    margin-bottom: -3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     /*padding: .5em;*/
     -webkit-animation: rotateInLeft 3s; /*Chrome Safari Opera*/
     animation: rotateInLeft 3s;
 }
 .pagebar {
-    /*background: #D86D26;*/
-    background: -webkit-linear-gradient(180deg, #F4006F, #BF085B); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(180deg, #F4006F, #BF085B); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(180deg, #F4006F, #BF085B); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(180deg, #F4006F, #BF085B); /* Standard syntax */
+    background: -webkit-linear-gradient(180deg, #F4006F, #5E002B); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(180deg, #F4006F, #5E002B); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(180deg, #F4006F, #5E002B); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(180deg, #F4006F, #5E002B); /* Standard syntax */
     color: lightgray !important;
     /*width:80%;*/
     border: 1px solid black;
