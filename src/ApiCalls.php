@@ -16,7 +16,16 @@ class ApiCalls implements iApiCalls
         if (array_key_exists('message', $body)) {
             return \FALSE;
         } else {
+            $_SESSION['zones'] = self::zoneList($body);
             return \TRUE;
         }
+    }
+    
+    private function zoneList($zones_array)
+    {
+        foreach ($zones_array as $zones) {
+            $zone_hold[] = $zones['zone'];
+        }
+        return $zone_hold;
     }
 }
