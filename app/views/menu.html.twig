@@ -29,10 +29,16 @@
 {% block content %}
     <div id='tabs'>
         <ul>
-            <li><a href='#zones-check' title='Zone Consistancy Checker'>Zone Check</a></li>
+            <li><a href='#zone-check' title='Zone Consistancy Checker'>Zone Check</a></li>
+            <li><a href='#zone-dump' title=''Zone Record Dumper'>Zone Dump</a></li>
         </ul>
-        <div id='zones-check'>
-            <form method='post'action='/zonees/diff'>
+        <div id='zone-check'>
+            <form method='post'action='/zone/diff'>
+                
+            </form>
+        </div>
+        <div id='zone-dump'>
+            <form method='post'action='/zone/dump'>
                 
             </form>
         </div>
