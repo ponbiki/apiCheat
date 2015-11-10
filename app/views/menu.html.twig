@@ -12,6 +12,12 @@
             $( "#tabs" ).tabs();
         });
         $(function() {
+            $( "#accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+        });
+        $(function() {
             $( "input[type=submit], a, .jbutton" ).button();
         });
         $(function() {
@@ -57,7 +63,14 @@
             </form>
         </div>
         <div id='records'>
-
+            <div id='accordion'>
+                <h3 title='Change Record Type'>Change Type</h3>
+                <div id='change'>
+                    <form method ='get' action='/record/change'>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
