@@ -15,6 +15,7 @@ class ApiCalls implements iApiCalls
         \curl_close($ch);
         return $body;
     }
+    
     public function keyValidate($key)
     {
         $arg = "zones";
