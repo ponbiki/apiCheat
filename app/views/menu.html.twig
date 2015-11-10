@@ -15,7 +15,10 @@
             $( "input[type=submit], a, .jbutton" ).button();
         });
         $(function() {
-            $( "#zonecheck").selectmenu();
+            $( "#zone").selectmenu();
+        });
+        $(function() {
+            $( "#zonedump").selectmenu();
         });
         $(document).ready(function() {
             setTimeout(function() {
@@ -30,17 +33,31 @@
     <div id='tabs'>
         <ul>
             <li><a href='#zone-check' title='Zone Consistancy Checker'>Zone Check</a></li>
-            <li><a href='#zone-dump' title=''Zone Record Dumper'>Zone Dump</a></li>
+            <li><a href='#zone-dump' title='Zone Record Dumper'>Zone Dump</a></li>
+            <li><a href='#records' title='Record Level Actions'>Records</a></li>
         </ul>
         <div id='zone-check'>
             <form method='post'action='/zone/diff'>
-                
+                <select name='zone' id='zone' style='width:200px;'>
+                    {% for zone in zones %}
+                        <option>{{ zone }}</option>
+                    {% endfor %}
+                </select><br />
+                <input type='submit' value='Verify Zone Info' />
             </form>
         </div>
         <div id='zone-dump'>
             <form method='post'action='/zone/dump'>
-                
+                <select name='zonedump' id='zonedump' style='width:200px;'>
+                    {% for zone in zones %}
+                        <option>{{ zone }}</option>
+                    {% endfor %}
+                </select><br />
+                <input type='submit' value='Dump Zone Info' />
             </form>
+        </div>
+        <div id='records'>
+
         </div>
     </div>
 {% endblock %}
