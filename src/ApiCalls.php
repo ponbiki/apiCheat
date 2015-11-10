@@ -35,3 +35,27 @@ class ApiCalls implements iApiCalls
         return $zone_hold;
     }
 }
+
+
+
+/*
+<?php
+$key = "xxxxxxxx";
+$chand = curl_init();
+curl_setopt($chand, CURLOPT_URL, 'https://api.nsone.net/v1/zones');
+curl_setopt($chand, CURLOPT_HTTPHEADER, array("X-NSONE-Key: $key"));
+curl_setopt($chand, CURLOPT_RETURNTRANSFER, true);
+$x = json_decode(curl_exec($chand), true);
+foreach ($x as $zones) {
+     $z[] = $zones['zone'];
+}
+
+foreach ($z as $fullrec) {
+    $chand = curl_init();
+    curl_setopt($chand, CURLOPT_URL, 'https://api.nsone.net/v1/zones/'.$fullrec);
+    curl_setopt($chand, CURLOPT_HTTPHEADER, array("X-NSONE-Key: $key"));
+    curl_setopt($chand, CURLOPT_RETURNTRANSFER, true);
+    $x = json_decode(curl_exec($chand), true);
+    print_r($x);
+}
+ */
