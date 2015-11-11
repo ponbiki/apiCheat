@@ -37,26 +37,32 @@ class ApiCalls implements iApiCalls
     }
 }
 
-
-
 /*
-<?php
-$key = "xxxxxxxx";
 $chand = curl_init();
 curl_setopt($chand, CURLOPT_URL, 'https://api.nsone.net/v1/zones');
 curl_setopt($chand, CURLOPT_HTTPHEADER, array("X-NSONE-Key: $key"));
 curl_setopt($chand, CURLOPT_RETURNTRANSFER, true);
-$x = json_decode(curl_exec($chand), true);
-foreach ($x as $zones) {
-     $z[] = $zones['zone'];
+$a = json_decode(curl_exec($chand), true);
+foreach ($a as $zones) {
+     $b[] = $zones['zone'];
 }
 
-foreach ($z as $fullrec) {
+foreach ($b as $fullrec) {
     $chand = curl_init();
     curl_setopt($chand, CURLOPT_URL, 'https://api.nsone.net/v1/zones/'.$fullrec);
     curl_setopt($chand, CURLOPT_HTTPHEADER, array("X-NSONE-Key: $key"));
     curl_setopt($chand, CURLOPT_RETURNTRANSFER, true);
-    $x = json_decode(curl_exec($chand), true);
-    print_r($x);
+    $c = json_decode(curl_exec($chand), true);
+    $list[] = $c;
 }
- */
+
+foreach ($list as $d) {
+    $zone = $d['zone'];
+    foreach ($d['records'] as $e) {
+        $records[] = ['domain' => $e['domain'], 'type' => $e['type']];
+    }
+    $zonez[] = ['zone' => $d['zone'], $records];
+}
+
+print_r($zonez);
+*/
