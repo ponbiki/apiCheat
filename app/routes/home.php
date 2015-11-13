@@ -37,6 +37,7 @@ $app->post('/', function () use ($app) {
         $app->redirect('/');
     } else {
         cheat\Session::clear();
+        $_SESSION['zones'] = $api;
         $_SESSION['api_key'] = $key;
         $_SESSION['loggedin'] = \TRUE;
         $app->redirect('/menu');
