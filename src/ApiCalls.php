@@ -4,12 +4,16 @@ namespace ponbiki\apiCheat;
 
 class ApiCalls implements iApiCalls
 {
+    
+    protected $clean_key;
+    public $zone_hold;
+    
     protected function baseCurl($key, $arg)
     {
-        $clean_key = \filter_var($key, FILTER_SANITIZE_STRING);
+        $this->clean_key = \filter_var($key, FILTER_SANITIZE_STRING);
         $ch = \curl_init();
         \curl_setopt($ch, \CURLOPT_URL, self::BASEURL . $arg);
-        \curl_setopt($ch, \CURLOPT_HTTPHEADER, array("X-NSONE-Key: $clean_key"));
+        \curl_setopt($ch, \CURLOPT_HTTPHEADER, array("X-NSONE-Key: $this->clean_key"));
         \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
         $this->body = \json_decode(\curl_exec($ch), true);
         \curl_close($ch);
@@ -35,9 +39,11 @@ class ApiCalls implements iApiCalls
         return $this->zone_hold;
     }
  
-    /*public function getRecords($zone) {
-        self::baseCurl
-    }*/
+    public function getRecords($zone) {
+        $this->clean_zone = \filter_var($zone, FILTER_SANITIZE_STRING);
+        $zone_arg = "zones/$this->clean_zone";
+        return self::baseCurl($this->clean_key, $zone_arg);
+    }
 }
 
 /*
