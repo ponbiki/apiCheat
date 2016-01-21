@@ -1,6 +1,6 @@
 <?php
 
-namespace ponbiki\apiCheat;
+namespace ns1\apiCheat;
 
 interface iSession
 {

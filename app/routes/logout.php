@@ -1,6 +1,6 @@
 <?php
 
-use ponbiki\apiCheat as api;
+use ns1\apiCheat as api;
 
 $app->get('/logout', function() use ($app) {
     

@@ -1,6 +1,6 @@
 <?php
 
-use ponbiki\apiCheat as cheat;
+use ns1\apiCheat as cheat;
 
 
 $app->get('/menu', function() use ($app) {
