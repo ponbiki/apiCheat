@@ -5,7 +5,7 @@ use ns1\apiCheat as cheat;
 
 $app->get('/menu', function() use ($app) {
     
-    if (!isset($_SESSION['api_key'])) {
+    if (!isset($_SESSION['api']->valid_key)) {
         $app->redirect('/');
     }
     $page = "Menu";
@@ -17,7 +17,7 @@ $app->get('/menu', function() use ($app) {
         'info' => $_SESSION['info'],
         'error' => $_SESSION['error'],
         'loggedin' => $_SESSION['loggedin'],
-        'zones' => $_SESSION['zones']
+        'zones' => $_SESSION['api']->zonelist
     ]);
     
     cheat\Session::clear();    
