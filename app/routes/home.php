@@ -25,20 +25,22 @@ $app->get('/', function () use ($app) {
 
 $app->post('/', function () use ($app) {
     
-    $key = \filter_var(($app->request()->post('key')), FILTER_SANITIZE_STRING);
+    $check_key = \filter_var(($app->request()->post('key')), FILTER_SANITIZE_STRING);
     
-    $api = (new cheat\ApiCalls)->keyValidate($key);
-    
-    if ($key == "") {
+    if ($check_key == "") {
         $_SESSION['error'][] = "Please enter your API key";
         $app->redirect('/');
-    } elseif ($api == FALSE) {
+    }
+    
+    $_SESSION['api'] = new cheat\ApiCalls();
+    $valid_key = $_SESSION['api']->keyValidate($check_key);
+    
+    if ($valid_key === \FALSE) {
         $_SESSION['error'][] = "Key invalid. Please re-enter your API key";
+        unset($_SESSION['api']);
         $app->redirect('/');
     } else {
         cheat\Session::clear();
-        $_SESSION['zones'] = $api;
-        $_SESSION['api_key'] = $key;
         $_SESSION['loggedin'] = \TRUE;
         $app->redirect('/menu');
     }

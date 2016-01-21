@@ -7,8 +7,11 @@ class ApiCalls implements iApiCalls
     
     protected $clean_key;
     protected $search_arg;
-    public $zone_hold;
-    public $record_array;
+    protected $zone_hold;
+    protected $valid_key;
+    public $zone_list;
+    public $record_list;
+    public $matches_array;
     
     protected function baseCurl($key, $arg)
     {
@@ -29,7 +32,8 @@ class ApiCalls implements iApiCalls
         if (array_key_exists('message', $body)) {
             return \FALSE;
         } else {
-             return self::zoneList($body);
+            $this->valid_key = $key;
+            $this->zone_list = self::zoneList($body);
         }
     }
     
@@ -44,18 +48,18 @@ class ApiCalls implements iApiCalls
     public function getRecords($zone) {
         $this->clean_zone = \filter_var($zone, FILTER_SANITIZE_STRING);
         $zone_arg = "zones/$this->clean_zone";
-        return self::baseCurl($this->clean_key, $zone_arg);
+        $this->record_list = self::baseCurl($this->clean_key, $zone_arg);
     }
     
     public function getMatches($answer)
     {
         $this->search_arg = "search?q=$answer&type=answers";
-        $this->record_array = $this->baseCurl($this->valid_key, $this->arg);
+        $record_array = $this->baseCurl($this->valid_key, $this->arg);
         if (count($this->record_array === 0)) {
             $_SESSION['error'][] = "$answer is not associated with any records!";
             exit;
         } else {
-            return $this->record_array;
+            $this->matches_array = $record_array;
         }
     }
 }
